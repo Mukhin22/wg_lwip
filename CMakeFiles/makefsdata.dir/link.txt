@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/makefsdata.dir/lwip/src/apps/http/makefsdata/makefsdata.c.o  -o makefsdata 

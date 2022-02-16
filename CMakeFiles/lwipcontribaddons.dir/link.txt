@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblwipcontribaddons.a  CMakeFiles/lwipcontribaddons.dir/lwip-contrib/addons/tcp_isn/tcp_isn.c.o CMakeFiles/lwipcontribaddons.dir/lwip-contrib/addons/ipv6_static_routing/ip6_route_table.c.o
-/usr/bin/ranlib liblwipcontribaddons.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcrypto.a  CMakeFiles/crypto.dir/blake2s.c.o CMakeFiles/crypto.dir/chacha20.c.o CMakeFiles/crypto.dir/chacha20poly1305.c.o CMakeFiles/crypto.dir/poly1305-donna.c.o CMakeFiles/crypto.dir/x25519.c.o
-/usr/bin/ranlib libcrypto.a
