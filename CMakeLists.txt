@@ -3,7 +3,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_FLAGS -pthread)
 project(wg C)
 
-SET(GCC_LINK_FLAGS    "-nostartfiles -Wall -g -pthread")
+SET(GCC_LINK_FLAGS    "-Wall -g -pthread")
 
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -16,8 +16,6 @@ include(${LWIP_CONTRIB_DIR}/ports/CMakeCommon.cmake)
 set (LWIP_DEFINITIONS -DLWIP_DEBUG)
 set (LWIP_INCLUDE_DIRS
     "${LWIP_DIR}/src/include"
-    # "${LWIP_CONTRIB_DIR}/ports/unix/port/include"
-    # "${LWIP_CONTRIB_DIR}/examples/example_app"
     "${LWIP_CONTRIB_DIR}/"
     "${SRC_DIR}/crypto/refc"
     "${SRC_DIR}"
@@ -42,4 +40,4 @@ add_definitions("${GCC_LINK_FLAGS}")
 
 target_compile_definitions(wg PRIVATE ${LWIP_DEFINITIONS})
 
-target_link_libraries(wg ${LWIP_SANITIZER_LIBS} lwipcore ) # lwipallapps lwipcontribportunix
+target_link_libraries(wg ${LWIP_SANITIZER_LIBS} lwipcore )
