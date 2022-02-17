@@ -3796,6 +3796,30 @@ lwip/src/netif/zepif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcore.dir/build.make CMakeFiles/lwipcore.dir/lwip/src/netif/zepif.c.s
 .PHONY : lwip/src/netif/zepif.c.s
 
+src/arch/sys_arch.o: src/arch/sys_arch.c.o
+.PHONY : src/arch/sys_arch.o
+
+# target to build an object file
+src/arch/sys_arch.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.o
+.PHONY : src/arch/sys_arch.c.o
+
+src/arch/sys_arch.i: src/arch/sys_arch.c.i
+.PHONY : src/arch/sys_arch.i
+
+# target to preprocess a source file
+src/arch/sys_arch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.i
+.PHONY : src/arch/sys_arch.c.i
+
+src/arch/sys_arch.s: src/arch/sys_arch.c.s
+.PHONY : src/arch/sys_arch.s
+
+# target to generate assembly for a file
+src/arch/sys_arch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.s
+.PHONY : src/arch/sys_arch.c.s
+
 src/crypto.o: src/crypto.c.o
 .PHONY : src/crypto.o
 
@@ -4379,6 +4403,9 @@ help:
 	@echo "... lwip/src/netif/zepif.o"
 	@echo "... lwip/src/netif/zepif.i"
 	@echo "... lwip/src/netif/zepif.s"
+	@echo "... src/arch/sys_arch.o"
+	@echo "... src/arch/sys_arch.i"
+	@echo "... src/arch/sys_arch.s"
 	@echo "... src/crypto.o"
 	@echo "... src/crypto.i"
 	@echo "... src/crypto.s"
