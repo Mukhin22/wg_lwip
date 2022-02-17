@@ -23,7 +23,7 @@ set (LWIP_INCLUDE_DIRS
 
 include(${LWIP_DIR}/src/Filelists.cmake)
 include(${LWIP_CONTRIB_DIR}/Filelists.cmake)
-include(${LWIP_CONTRIB_DIR}/ports/unix/Filelists.cmake)
+# include(${LWIP_CONTRIB_DIR}/ports/unix/Filelists.cmake)
 
 
 add_executable(wg "${CMAKE_CURRENT_SOURCE_DIR}"  wg.c src/wireguard.c src/wireguardif.c src/wireguard-platform.c

@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <lwip/mem.h>
 static struct netif wg_netif_struct = {0};
 static struct netif *wg_netif = NULL;
 static uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
@@ -63,6 +64,7 @@ static void wireguard_setup() {
 }
 
 int main(void) {
+  mem_init();
   wireguard_setup();
   return 0;
 }

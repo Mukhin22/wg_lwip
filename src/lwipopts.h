@@ -35,9 +35,10 @@
 #ifdef LWIP_OPTTEST_FILE
 #include "lwipopts_test.h"
 #else /* LWIP_OPTTEST_FILE */
+#define MEMP_MEM_MALLOC 1
 
 #define LWIP_IPV4                  1
-#define LWIP_IPV6                  0
+#define LWIP_IPV6                  0 /* 1 - previous value */
 
 #define NO_SYS                     0
 #define LWIP_SOCKET                (NO_SYS==0)
@@ -77,9 +78,9 @@
 #ifdef LWIP_DEBUG
 
 #define LWIP_DBG_MIN_LEVEL         0
-#define PPP_DEBUG                  LWIP_DBG_OFF
-#define MEM_DEBUG                  LWIP_DBG_OFF
-#define MEMP_DEBUG                 LWIP_DBG_OFF
+#define PPP_DEBUG                  LWIP_DBG_ON
+#define MEM_DEBUG                  LWIP_DBG_ON
+#define MEMP_DEBUG                 LWIP_DBG_ON
 #define PBUF_DEBUG                 LWIP_DBG_OFF
 #define API_LIB_DEBUG              LWIP_DBG_OFF
 #define API_MSG_DEBUG              LWIP_DBG_OFF

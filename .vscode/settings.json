@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "lwipopts.h": "c",
-        "wireguardif.h": "c",
-        "ethernet.h": "c",
-        "pthread.h": "c"
-    }
-}
