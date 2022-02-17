@@ -14,7 +14,8 @@ static struct netif wg_netif_struct = {0};
 static struct netif *wg_netif = NULL;
 static uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
 
-static void wireguard_setup() {
+static err_t wireguard_setup(void) {
+  err_t err = ERR_OK;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
 
@@ -35,7 +36,7 @@ static void wireguard_setup() {
                        &wireguardif_init, &ip_input);
   if (!wg_netif) {
     fprintf(stderr, "netif_add failed\n");
-    return;
+    return ERR_MEM;
   }
   // Mark the interface as administratively up, link up flag is set
   // automatically when peer connects
@@ -54,17 +55,22 @@ static void wireguard_setup() {
   peer.endport_port = 12345;
 
   // Register the new WireGuard peer with the netwok interface
-  wireguardif_add_peer(wg_netif, &peer, &wg_peer_index);
+  err = wireguardif_add_peer(wg_netif, &peer, &wg_peer_index);
+  LWIP_ERROR("wireguardif_add_peer failed\n", err == ERR_OK, return ERR_ABRT);
 
   if ((wg_peer_index != WIREGUARDIF_INVALID_INDEX) &&
       !ip_addr_isany(&peer.endpoint_ip)) {
     // Start outbound connection to peer
-    wireguardif_connect(wg_netif, wg_peer_index);
+    err = wireguardif_connect(wg_netif, wg_peer_index);
+    LWIP_ERROR("wireguardif_connect failed\n", err == ERR_OK, return ERR_ABRT);
   }
+  return err;
 }
 
 int main(void) {
+  err_t err; 
   mem_init();
-  wireguard_setup();
+  err = wireguard_setup();
+  LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
   return 0;
 }
