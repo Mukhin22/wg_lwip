@@ -8,3 +8,4 @@ compile_commands.json
 *.a
 Makefile
 src/crypto/refc/Makefile
+minimal/

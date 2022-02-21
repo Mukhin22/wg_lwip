@@ -10,11 +10,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <lwip/mem.h>
+
 static struct netif wg_netif_struct = {0};
 static struct netif *wg_netif = NULL;
 static uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
 
-static err_t wireguard_setup(void) {
+static err_t wireguard_setup(void) {  
   err_t err = ERR_OK;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
