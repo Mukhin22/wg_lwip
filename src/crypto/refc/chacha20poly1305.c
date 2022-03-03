@@ -60,7 +60,11 @@ static void generate_poly1305_key(struct poly1305_context *poly1305_state, struc
 	chacha20_init(chacha20_state, key, nonce);
 
 	// We take the first 256 bits or the serialized state, and use those as the one-time Poly1305 key
+	#ifdef DEBUG
+	printf("First chacha20 use on generate poly1305_key\n");
+	#endif
 	chacha20(chacha20_state, block, block, sizeof(block));
+	
 
 	poly1305_init(poly1305_state, block);
 
