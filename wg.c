@@ -1,31 +1,19 @@
-#include "wireguard.h"
-#include "wireguardif.h"
-#include <netdb.h>
-#include <netinet/in.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <lwip/mem.h>
+#include "wg.h"
 
-static struct netif wg_netif_struct = {0};
-static struct netif *wg_netif = NULL;
-static uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
-
-static err_t wireguard_setup(void) {  
+err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_netif) {
   err_t err = ERR_OK;
+  struct netif wg_netif_struct = {0};
+  // static struct netif *wg_netif = NULL;
+  uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
 
-  ip_addr_t ipaddr;
-  IP4_ADDR(&ipaddr, 192, 168, 40, 10);
-  ip_addr_t netmask;
-  IP4_ADDR(&netmask, 255, 255, 255, 0);
-  ip_addr_t gateway;
-  IP4_ADDR(&gateway, 192, 168, 40, 1);
+  ip_addr_t ipaddr = init_data.ip;
+  // IP4_ADDR(&ipaddr, 192, 168, 40, 10);
+  ip_addr_t netmask = init_data.netmask;
+  // IP4_ADDR(&netmask, 255, 255, 255, 0);
+  ip_addr_t gateway = init_data.gateway;
+  // IP4_ADDR(&gateway, 192, 168, 40, 1);
 
   // Setup the WireGuard device structure
   wg.private_key = "8BU1giso23adjCk93dnpLJnK788bRAtpZxs8d+Jo+Vg=";
@@ -68,10 +56,10 @@ static err_t wireguard_setup(void) {
   return err;
 }
 
-int main(void) {
-  err_t err; 
-  mem_init();
-  err = wireguard_setup();
-  LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
-  return 0;
-}
+// int main(void) {
+//   err_t err; 
+//   mem_init();
+//   err = wireguard_setup();
+//   LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
+//   return 0;
+// }

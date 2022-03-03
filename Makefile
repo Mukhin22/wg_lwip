@@ -182,6 +182,19 @@ lwipcontribaddons/fast:
 .PHONY : lwipcontribaddons/fast
 
 #=============================================================================
+# Target rules for targets named lwipcontribportunix
+
+# Build rule for target.
+lwipcontribportunix: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lwipcontribportunix
+.PHONY : lwipcontribportunix
+
+# fast build rule for target.
+lwipcontribportunix/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/build
+.PHONY : lwipcontribportunix/fast
+
+#=============================================================================
 # Target rules for targets named wg
 
 # Build rule for target.
@@ -193,6 +206,19 @@ wg: cmake_check_build_system
 wg/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/build
 .PHONY : wg/fast
+
+#=============================================================================
+# Target rules for targets named echop
+
+# Build rule for target.
+echop: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 echop
+.PHONY : echop
+
+# fast build rule for target.
+echop/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/build
+.PHONY : echop/fast
 
 #=============================================================================
 # Target rules for targets named crypto
@@ -782,6 +808,150 @@ lwip-contrib/examples/tftp/tftp_example.s: lwip-contrib/examples/tftp/tftp_examp
 lwip-contrib/examples/tftp/tftp_example.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribexamples.dir/build.make CMakeFiles/lwipcontribexamples.dir/lwip-contrib/examples/tftp/tftp_example.c.s
 .PHONY : lwip-contrib/examples/tftp/tftp_example.c.s
+
+lwip-contrib/ports/unix/port/netif/fifo.o: lwip-contrib/ports/unix/port/netif/fifo.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/netif/fifo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/fifo.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.c.o
+
+lwip-contrib/ports/unix/port/netif/fifo.i: lwip-contrib/ports/unix/port/netif/fifo.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/netif/fifo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/fifo.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.c.i
+
+lwip-contrib/ports/unix/port/netif/fifo.s: lwip-contrib/ports/unix/port/netif/fifo.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/netif/fifo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/fifo.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/fifo.c.s
+
+lwip-contrib/ports/unix/port/netif/list.o: lwip-contrib/ports/unix/port/netif/list.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/list.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/netif/list.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/list.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/list.c.o
+
+lwip-contrib/ports/unix/port/netif/list.i: lwip-contrib/ports/unix/port/netif/list.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/list.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/netif/list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/list.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/list.c.i
+
+lwip-contrib/ports/unix/port/netif/list.s: lwip-contrib/ports/unix/port/netif/list.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/list.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/netif/list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/list.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/list.c.s
+
+lwip-contrib/ports/unix/port/netif/sio.o: lwip-contrib/ports/unix/port/netif/sio.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/netif/sio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/sio.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.c.o
+
+lwip-contrib/ports/unix/port/netif/sio.i: lwip-contrib/ports/unix/port/netif/sio.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/netif/sio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/sio.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.c.i
+
+lwip-contrib/ports/unix/port/netif/sio.s: lwip-contrib/ports/unix/port/netif/sio.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/netif/sio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/sio.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/sio.c.s
+
+lwip-contrib/ports/unix/port/netif/tapif.o: lwip-contrib/ports/unix/port/netif/tapif.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/netif/tapif.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/tapif.c.o
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.c.o
+
+lwip-contrib/ports/unix/port/netif/tapif.i: lwip-contrib/ports/unix/port/netif/tapif.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/netif/tapif.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/tapif.c.i
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.c.i
+
+lwip-contrib/ports/unix/port/netif/tapif.s: lwip-contrib/ports/unix/port/netif/tapif.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/netif/tapif.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/netif/tapif.c.s
+.PHONY : lwip-contrib/ports/unix/port/netif/tapif.c.s
+
+lwip-contrib/ports/unix/port/perf.o: lwip-contrib/ports/unix/port/perf.c.o
+.PHONY : lwip-contrib/ports/unix/port/perf.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/perf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/perf.c.o
+.PHONY : lwip-contrib/ports/unix/port/perf.c.o
+
+lwip-contrib/ports/unix/port/perf.i: lwip-contrib/ports/unix/port/perf.c.i
+.PHONY : lwip-contrib/ports/unix/port/perf.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/perf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/perf.c.i
+.PHONY : lwip-contrib/ports/unix/port/perf.c.i
+
+lwip-contrib/ports/unix/port/perf.s: lwip-contrib/ports/unix/port/perf.c.s
+.PHONY : lwip-contrib/ports/unix/port/perf.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/perf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/perf.c.s
+.PHONY : lwip-contrib/ports/unix/port/perf.c.s
+
+lwip-contrib/ports/unix/port/sys_arch.o: lwip-contrib/ports/unix/port/sys_arch.c.o
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.o
+
+# target to build an object file
+lwip-contrib/ports/unix/port/sys_arch.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/sys_arch.c.o
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.c.o
+
+lwip-contrib/ports/unix/port/sys_arch.i: lwip-contrib/ports/unix/port/sys_arch.c.i
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.i
+
+# target to preprocess a source file
+lwip-contrib/ports/unix/port/sys_arch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/sys_arch.c.i
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.c.i
+
+lwip-contrib/ports/unix/port/sys_arch.s: lwip-contrib/ports/unix/port/sys_arch.c.s
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.s
+
+# target to generate assembly for a file
+lwip-contrib/ports/unix/port/sys_arch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribportunix.dir/build.make CMakeFiles/lwipcontribportunix.dir/lwip-contrib/ports/unix/port/sys_arch.c.s
+.PHONY : lwip-contrib/ports/unix/port/sys_arch.c.s
 
 lwip/src/api/api_lib.o: lwip/src/api/api_lib.c.o
 .PHONY : lwip/src/api/api_lib.o
@@ -3639,6 +3809,30 @@ lwip/src/netif/zepif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcore.dir/build.make CMakeFiles/lwipcore.dir/lwip/src/netif/zepif.c.s
 .PHONY : lwip/src/netif/zepif.c.s
 
+minimal/main.o: minimal/main.c.o
+.PHONY : minimal/main.o
+
+# target to build an object file
+minimal/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/main.c.o
+.PHONY : minimal/main.c.o
+
+minimal/main.i: minimal/main.c.i
+.PHONY : minimal/main.i
+
+# target to preprocess a source file
+minimal/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/main.c.i
+.PHONY : minimal/main.c.i
+
+minimal/main.s: minimal/main.c.s
+.PHONY : minimal/main.s
+
+# target to generate assembly for a file
+minimal/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/main.c.s
+.PHONY : minimal/main.c.s
+
 src/arch/sys_arch.o: src/arch/sys_arch.c.o
 .PHONY : src/arch/sys_arch.o
 
@@ -3765,6 +3959,7 @@ wg.o: wg.c.o
 # target to build an object file
 wg.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.o
 .PHONY : wg.c.o
 
 wg.i: wg.c.i
@@ -3773,6 +3968,7 @@ wg.i: wg.c.i
 # target to preprocess a source file
 wg.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.i
 .PHONY : wg.c.i
 
 wg.s: wg.c.s
@@ -3781,6 +3977,7 @@ wg.s: wg.c.s
 # target to generate assembly for a file
 wg.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.s
 .PHONY : wg.c.s
 
 # Help Target
@@ -3792,10 +3989,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... crypto"
+	@echo "... echop"
 	@echo "... lwipallapps"
 	@echo "... lwipcontribaddons"
 	@echo "... lwipcontribapps"
 	@echo "... lwipcontribexamples"
+	@echo "... lwipcontribportunix"
 	@echo "... lwipcore"
 	@echo "... wg"
 	@echo "... lwip-contrib/addons/ipv6_static_routing/ip6_route_table.o"
@@ -3870,6 +4069,24 @@ help:
 	@echo "... lwip-contrib/examples/tftp/tftp_example.o"
 	@echo "... lwip-contrib/examples/tftp/tftp_example.i"
 	@echo "... lwip-contrib/examples/tftp/tftp_example.s"
+	@echo "... lwip-contrib/ports/unix/port/netif/fifo.o"
+	@echo "... lwip-contrib/ports/unix/port/netif/fifo.i"
+	@echo "... lwip-contrib/ports/unix/port/netif/fifo.s"
+	@echo "... lwip-contrib/ports/unix/port/netif/list.o"
+	@echo "... lwip-contrib/ports/unix/port/netif/list.i"
+	@echo "... lwip-contrib/ports/unix/port/netif/list.s"
+	@echo "... lwip-contrib/ports/unix/port/netif/sio.o"
+	@echo "... lwip-contrib/ports/unix/port/netif/sio.i"
+	@echo "... lwip-contrib/ports/unix/port/netif/sio.s"
+	@echo "... lwip-contrib/ports/unix/port/netif/tapif.o"
+	@echo "... lwip-contrib/ports/unix/port/netif/tapif.i"
+	@echo "... lwip-contrib/ports/unix/port/netif/tapif.s"
+	@echo "... lwip-contrib/ports/unix/port/perf.o"
+	@echo "... lwip-contrib/ports/unix/port/perf.i"
+	@echo "... lwip-contrib/ports/unix/port/perf.s"
+	@echo "... lwip-contrib/ports/unix/port/sys_arch.o"
+	@echo "... lwip-contrib/ports/unix/port/sys_arch.i"
+	@echo "... lwip-contrib/ports/unix/port/sys_arch.s"
 	@echo "... lwip/src/api/api_lib.o"
 	@echo "... lwip/src/api/api_lib.i"
 	@echo "... lwip/src/api/api_lib.s"
@@ -4227,6 +4444,9 @@ help:
 	@echo "... lwip/src/netif/zepif.o"
 	@echo "... lwip/src/netif/zepif.i"
 	@echo "... lwip/src/netif/zepif.s"
+	@echo "... minimal/main.o"
+	@echo "... minimal/main.i"
+	@echo "... minimal/main.s"
 	@echo "... src/arch/sys_arch.o"
 	@echo "... src/arch/sys_arch.i"
 	@echo "... src/arch/sys_arch.s"
