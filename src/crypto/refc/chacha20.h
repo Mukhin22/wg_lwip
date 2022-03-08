@@ -43,6 +43,10 @@
 #define CHACHA20_KEY_SIZE		(32)
 
 #define DEBUG
+#ifdef DEBUG 
+#include <stdio.h>
+#endif
+
 struct chacha20_ctx {
 	uint32_t state[16];
 };

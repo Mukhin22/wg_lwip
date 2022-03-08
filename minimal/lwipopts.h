@@ -62,6 +62,8 @@
    ---------- Memory options ----------
    ------------------------------------
 */
+
+#define MEM_LIBC_MALLOC                 1
 /**
  * MEM_ALIGNMENT: should be set to the alignment of the CPU
  *    4 byte alignment -> #define MEM_ALIGNMENT 4
@@ -127,6 +129,7 @@
  */
 #define MEMP_NUM_ARP_QUEUE              2
 
+#define LWIP_TIMERS_CUSTOM              1
 /**
  * MEMP_NUM_SYS_TIMEOUT: the number of simultaneously active timeouts.
  * The default number of timeouts is calculated here for all enabled modules.
@@ -433,6 +436,7 @@
 #define TCP_FR_DEBUG     LWIP_DBG_ON
 #define TCP_QLEN_DEBUG   LWIP_DBG_ON
 #define TCP_RST_DEBUG    LWIP_DBG_ON
+#define TAPIF_DEBUG      LWIP_DBG_ON
 
 extern unsigned char debug_flags;
 #define LWIP_DBG_TYPES_ON debug_flags

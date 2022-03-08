@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/cmake/1005/bin/cmake
+CMAKE_COMMAND = /snap/cmake/1035/bin/cmake
 
 # The command to remove a file.
-RM = /snap/cmake/1005/bin/cmake -E rm -f
+RM = /snap/cmake/1035/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/cmake/1005/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/cmake/1035/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -479,6 +479,7 @@ lwip-contrib/apps/tcpecho_raw/tcpecho_raw.o: lwip-contrib/apps/tcpecho_raw/tcpec
 # target to build an object file
 lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.o
 .PHONY : lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.o
 
 lwip-contrib/apps/tcpecho_raw/tcpecho_raw.i: lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.i
@@ -487,6 +488,7 @@ lwip-contrib/apps/tcpecho_raw/tcpecho_raw.i: lwip-contrib/apps/tcpecho_raw/tcpec
 # target to preprocess a source file
 lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.i
 .PHONY : lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.i
 
 lwip-contrib/apps/tcpecho_raw/tcpecho_raw.s: lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.s
@@ -495,6 +497,7 @@ lwip-contrib/apps/tcpecho_raw/tcpecho_raw.s: lwip-contrib/apps/tcpecho_raw/tcpec
 # target to generate assembly for a file
 lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.s
 .PHONY : lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c.s
 
 lwip-contrib/apps/udpecho/udpecho.o: lwip-contrib/apps/udpecho/udpecho.c.o
@@ -527,6 +530,7 @@ lwip-contrib/apps/udpecho_raw/udpecho_raw.o: lwip-contrib/apps/udpecho_raw/udpec
 # target to build an object file
 lwip-contrib/apps/udpecho_raw/udpecho_raw.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.o
 .PHONY : lwip-contrib/apps/udpecho_raw/udpecho_raw.c.o
 
 lwip-contrib/apps/udpecho_raw/udpecho_raw.i: lwip-contrib/apps/udpecho_raw/udpecho_raw.c.i
@@ -535,6 +539,7 @@ lwip-contrib/apps/udpecho_raw/udpecho_raw.i: lwip-contrib/apps/udpecho_raw/udpec
 # target to preprocess a source file
 lwip-contrib/apps/udpecho_raw/udpecho_raw.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.i
 .PHONY : lwip-contrib/apps/udpecho_raw/udpecho_raw.c.i
 
 lwip-contrib/apps/udpecho_raw/udpecho_raw.s: lwip-contrib/apps/udpecho_raw/udpecho_raw.c.s
@@ -543,6 +548,7 @@ lwip-contrib/apps/udpecho_raw/udpecho_raw.s: lwip-contrib/apps/udpecho_raw/udpec
 # target to generate assembly for a file
 lwip-contrib/apps/udpecho_raw/udpecho_raw.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcontribapps.dir/build.make CMakeFiles/lwipcontribapps.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/lwip-contrib/apps/udpecho_raw/udpecho_raw.c.s
 .PHONY : lwip-contrib/apps/udpecho_raw/udpecho_raw.c.s
 
 lwip-contrib/examples/httpd/fs_example/fs_example.o: lwip-contrib/examples/httpd/fs_example/fs_example.c.o
@@ -3809,6 +3815,30 @@ lwip/src/netif/zepif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcore.dir/build.make CMakeFiles/lwipcore.dir/lwip/src/netif/zepif.c.s
 .PHONY : lwip/src/netif/zepif.c.s
 
+minimal/custom_timers.o: minimal/custom_timers.c.o
+.PHONY : minimal/custom_timers.o
+
+# target to build an object file
+minimal/custom_timers.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.o
+.PHONY : minimal/custom_timers.c.o
+
+minimal/custom_timers.i: minimal/custom_timers.c.i
+.PHONY : minimal/custom_timers.i
+
+# target to preprocess a source file
+minimal/custom_timers.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.i
+.PHONY : minimal/custom_timers.c.i
+
+minimal/custom_timers.s: minimal/custom_timers.c.s
+.PHONY : minimal/custom_timers.s
+
+# target to generate assembly for a file
+minimal/custom_timers.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.s
+.PHONY : minimal/custom_timers.c.s
+
 minimal/main.o: minimal/main.c.o
 .PHONY : minimal/main.o
 
@@ -3832,6 +3862,30 @@ minimal/main.s: minimal/main.c.s
 minimal/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/main.c.s
 .PHONY : minimal/main.c.s
+
+minimal/tapif.o: minimal/tapif.c.o
+.PHONY : minimal/tapif.o
+
+# target to build an object file
+minimal/tapif.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/tapif.c.o
+.PHONY : minimal/tapif.c.o
+
+minimal/tapif.i: minimal/tapif.c.i
+.PHONY : minimal/tapif.i
+
+# target to preprocess a source file
+minimal/tapif.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/tapif.c.i
+.PHONY : minimal/tapif.c.i
+
+minimal/tapif.s: minimal/tapif.c.s
+.PHONY : minimal/tapif.s
+
+# target to generate assembly for a file
+minimal/tapif.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/tapif.c.s
+.PHONY : minimal/tapif.c.s
 
 src/arch/sys_arch.o: src/arch/sys_arch.c.o
 .PHONY : src/arch/sys_arch.o
@@ -3959,7 +4013,6 @@ wg.o: wg.c.o
 # target to build an object file
 wg.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.o
 .PHONY : wg.c.o
 
 wg.i: wg.c.i
@@ -3968,7 +4021,6 @@ wg.i: wg.c.i
 # target to preprocess a source file
 wg.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.i
 .PHONY : wg.c.i
 
 wg.s: wg.c.s
@@ -3977,7 +4029,6 @@ wg.s: wg.c.s
 # target to generate assembly for a file
 wg.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/wg.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/wg.c.s
 .PHONY : wg.c.s
 
 # Help Target
@@ -4444,9 +4495,15 @@ help:
 	@echo "... lwip/src/netif/zepif.o"
 	@echo "... lwip/src/netif/zepif.i"
 	@echo "... lwip/src/netif/zepif.s"
+	@echo "... minimal/custom_timers.o"
+	@echo "... minimal/custom_timers.i"
+	@echo "... minimal/custom_timers.s"
 	@echo "... minimal/main.o"
 	@echo "... minimal/main.i"
 	@echo "... minimal/main.s"
+	@echo "... minimal/tapif.o"
+	@echo "... minimal/tapif.i"
+	@echo "... minimal/tapif.s"
 	@echo "... src/arch/sys_arch.o"
 	@echo "... src/arch/sys_arch.i"
 	@echo "... src/arch/sys_arch.s"

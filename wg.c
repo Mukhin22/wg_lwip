@@ -7,13 +7,15 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
   uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
-
-  ip_addr_t ipaddr = init_data.ip;
-  // IP4_ADDR(&ipaddr, 192, 168, 40, 10);
-  ip_addr_t netmask = init_data.netmask;
-  // IP4_ADDR(&netmask, 255, 255, 255, 0);
-  ip_addr_t gateway = init_data.gateway;
-  // IP4_ADDR(&gateway, 192, 168, 40, 1);
+  ip_addr_t ipaddr;
+  ip_addr_t netmask;
+  ip_addr_t gateway;
+  // ip_addr_t ipaddr = init_data.ip;
+  IP4_ADDR(&ipaddr, 192, 168, 40, 10);
+  // ip_addr_t netmask = init_data.netmask;
+  IP4_ADDR(&netmask, 255, 255, 255, 0);
+  // ip_addr_t gateway = init_data.gateway;
+  IP4_ADDR(&gateway, 192, 168, 40, 1);
 
   // Setup the WireGuard device structure
   wg.private_key = "8BU1giso23adjCk93dnpLJnK788bRAtpZxs8d+Jo+Vg=";

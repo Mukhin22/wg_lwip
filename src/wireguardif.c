@@ -935,7 +935,7 @@ static bool should_reset_peer(struct wireguard_peer *peer) {
   return result;
 }
 
-static void wireguardif_tmr(void *arg) {
+void wireguardif_tmr(void *arg) {
   struct wireguard_device *device = (struct wireguard_device *)arg;
   struct wireguard_peer *peer;
   int x;
@@ -1077,6 +1077,9 @@ err_t wireguardif_init(struct netif *netif) {
     }
   } else {
     result = ERR_ARG;
+  }
+  if (result == ERR_OK) {
+      fprintf(stdout, "wireguardif_init success\n");
   }
   return result;
 }

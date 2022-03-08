@@ -30,6 +30,8 @@
  * RT timer modifications by Christiaan Simons
  */
 
+#include "lwipopts.h"
+
 #include <unistd.h>
 #include <getopt.h>
 #include <string.h>
@@ -40,8 +42,8 @@
 #include "lwip/mem.h"
 #include "lwip/memp.h"
 #include "lwip/sys.h"
-#include "lwip/timeouts.h"
-
+#include "custom_timers.h"
+// #include "lwip/timeouts.h"
 #include "lwip/stats.h"
 
 #include "lwip/ip.h"
@@ -49,7 +51,7 @@
 #include "lwip/udp.h"
 #include "lwip/tcp.h"
 
-#include "netif/tapif.h"
+#include "tapif.h"
 #include "lwip/etharp.h"
 #include "netif/ethernet.h"
 
@@ -105,7 +107,6 @@ main(int argc, char **argv)
   struct netif netif;
   struct netif wg_netif;
   struct wg_init_data wg_init_params;
-
   int ch;
   char ip_str[16] = {0}, nm_str[16] = {0}, gw_str[16] = {0};
 
@@ -118,7 +119,7 @@ main(int argc, char **argv)
   trap_flag = 0;
 #endif
   /* use debug flags defined by debug.h */
-  debug_flags = LWIP_DBG_OFF;
+  debug_flags = LWIP_DBG_ON;
 
   while ((ch = getopt_long(argc, argv, "dhg:i:m:", longopts, NULL)) != -1) {
     switch (ch) {
@@ -168,6 +169,7 @@ main(int argc, char **argv)
 
   netif_set_default(&netif);
   netif_set_up(&netif);
+  // sys_timeouts_init();
 #if LWIP_IPV6
   netif_create_ip6_linklocal_address(&netif, 1);
 #endif
