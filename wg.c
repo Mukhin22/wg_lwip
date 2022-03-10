@@ -57,11 +57,3 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
   }
   return err;
 }
-
-// int main(void) {
-//   err_t err; 
-//   mem_init();
-//   err = wireguard_setup();
-//   LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
-//   return 0;
-// }
