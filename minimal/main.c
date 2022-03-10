@@ -167,7 +167,6 @@ main(int argc, char **argv)
 
   netif_add(&netif, &ipaddr, &netmask, &gw, NULL, tapif_init, ethernet_input);
 
-  netif_set_default(&netif);
   netif_set_up(&netif);
   // sys_timeouts_init();
 #if LWIP_IPV6
@@ -179,6 +178,7 @@ main(int argc, char **argv)
 
   err = wireguard_setup(wg_init_params, &wg_netif);
   LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
+  netif_set_default(&wg_netif);
   printf("Applications started.\n");
   while (1) {
     /* poll netif, pass packet to lwIP */

@@ -23,7 +23,7 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
   wg.bind_netif = NULL;
 
   // Register the new WireGuard network interface with lwIP
-  wg_netif = netif_add(&wg_netif_struct, &ipaddr, &netmask, &gateway, &wg,
+  netif_add(wg_netif, &ipaddr, &netmask, &gateway, &wg,
                        &wireguardif_init, &ip_input);
   if (!wg_netif) {
     fprintf(stderr, "netif_add failed\n");
