@@ -33,16 +33,17 @@ add_library(wg STATIC  wg.c src/wireguard.c src/wireguardif.c src/wireguard-plat
 src/crypto.c src/arch/sys_arch.c)
 
 add_executable(echop "${MINIMAL_DIR}" minimal/main.c minimal/tapif.c lwip-contrib/apps/udpecho_raw/udpecho_raw.c 
-lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c minimal/custom_timers.c)
+lwip-contrib/apps/tcpecho_raw/tcpecho_raw.c src/arch/sys_arch.c)#minimal/custom_timers.c)
 
 add_subdirectory("${CRYPTO_DIR}")
 
-target_link_libraries(wg crypto)
+target_link_libraries(wg crypto lwipcore)
 
 
 target_include_directories(wg PRIVATE ${LWIP_INCLUDE_DIRS})
 target_include_directories(echop PRIVATE ${LWIP_INCLUDE_DIRS})
 target_include_directories(wg PRIVATE ${CRYPTO_DIR})
+target_include_directories(wg PRIVATE ${MINIMAL_DIR})
 
 target_link_libraries(echop lwipcore wg crypto)
 #lwipcontribexamples lwipcontribaddons lwipcontribapps

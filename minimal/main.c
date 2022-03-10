@@ -42,8 +42,8 @@
 #include "lwip/mem.h"
 #include "lwip/memp.h"
 #include "lwip/sys.h"
-#include "custom_timers.h"
-// #include "lwip/timeouts.h"
+// #include "custom_timers.h"
+#include "lwip/timeouts.h"
 #include "lwip/stats.h"
 
 #include "lwip/ip.h"
@@ -180,7 +180,6 @@ main(int argc, char **argv)
   err = wireguard_setup(wg_init_params, &wg_netif);
   LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
   printf("Applications started.\n");
-
   while (1) {
     /* poll netif, pass packet to lwIP */
     tapif_select(&netif);

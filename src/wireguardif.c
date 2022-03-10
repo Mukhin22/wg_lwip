@@ -217,6 +217,9 @@ static err_t wireguardif_output_to_peer(struct netif *netif, struct pbuf *q,
 // peer/endpoint
 static err_t wireguardif_output(struct netif *netif, struct pbuf *q,
                                 const ip4_addr_t *ipaddr) {
+#ifdef WG_DEBUG
+  printf("Wireguard output started\n");
+#endif
   struct wireguard_device *device = (struct wireguard_device *)netif->state;
   // Send to peer that matches dest IP
   struct wireguard_peer *peer = peer_lookup_by_allowed_ip(device, ipaddr);
@@ -937,6 +940,8 @@ static bool should_reset_peer(struct wireguard_peer *peer) {
 
 void wireguardif_tmr(void *arg) {
   struct wireguard_device *device = (struct wireguard_device *)arg;
+  device->netif->state = device;
+  // device->netif->output = wireguardif_output;
   struct wireguard_peer *peer;
   int x;
   // Reschedule this timer

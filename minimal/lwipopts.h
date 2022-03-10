@@ -129,7 +129,7 @@
  */
 #define MEMP_NUM_ARP_QUEUE              2
 
-#define LWIP_TIMERS_CUSTOM              1
+#define LWIP_TIMERS_CUSTOM              0
 /**
  * MEMP_NUM_SYS_TIMEOUT: the number of simultaneously active timeouts.
  * The default number of timeouts is calculated here for all enabled modules.

@@ -3815,30 +3815,6 @@ lwip/src/netif/zepif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lwipcore.dir/build.make CMakeFiles/lwipcore.dir/lwip/src/netif/zepif.c.s
 .PHONY : lwip/src/netif/zepif.c.s
 
-minimal/custom_timers.o: minimal/custom_timers.c.o
-.PHONY : minimal/custom_timers.o
-
-# target to build an object file
-minimal/custom_timers.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.o
-.PHONY : minimal/custom_timers.c.o
-
-minimal/custom_timers.i: minimal/custom_timers.c.i
-.PHONY : minimal/custom_timers.i
-
-# target to preprocess a source file
-minimal/custom_timers.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.i
-.PHONY : minimal/custom_timers.c.i
-
-minimal/custom_timers.s: minimal/custom_timers.c.s
-.PHONY : minimal/custom_timers.s
-
-# target to generate assembly for a file
-minimal/custom_timers.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/minimal/custom_timers.c.s
-.PHONY : minimal/custom_timers.c.s
-
 minimal/main.o: minimal/main.c.o
 .PHONY : minimal/main.o
 
@@ -3893,6 +3869,7 @@ src/arch/sys_arch.o: src/arch/sys_arch.c.o
 # target to build an object file
 src/arch/sys_arch.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/src/arch/sys_arch.c.o
 .PHONY : src/arch/sys_arch.c.o
 
 src/arch/sys_arch.i: src/arch/sys_arch.c.i
@@ -3901,6 +3878,7 @@ src/arch/sys_arch.i: src/arch/sys_arch.c.i
 # target to preprocess a source file
 src/arch/sys_arch.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/src/arch/sys_arch.c.i
 .PHONY : src/arch/sys_arch.c.i
 
 src/arch/sys_arch.s: src/arch/sys_arch.c.s
@@ -3909,6 +3887,7 @@ src/arch/sys_arch.s: src/arch/sys_arch.c.s
 # target to generate assembly for a file
 src/arch/sys_arch.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wg.dir/build.make CMakeFiles/wg.dir/src/arch/sys_arch.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/echop.dir/build.make CMakeFiles/echop.dir/src/arch/sys_arch.c.s
 .PHONY : src/arch/sys_arch.c.s
 
 src/crypto.o: src/crypto.c.o
@@ -4495,9 +4474,6 @@ help:
 	@echo "... lwip/src/netif/zepif.o"
 	@echo "... lwip/src/netif/zepif.i"
 	@echo "... lwip/src/netif/zepif.s"
-	@echo "... minimal/custom_timers.o"
-	@echo "... minimal/custom_timers.i"
-	@echo "... minimal/custom_timers.s"
 	@echo "... minimal/main.o"
 	@echo "... minimal/main.i"
 	@echo "... minimal/main.s"

@@ -48,6 +48,10 @@
 /* Platform-specific functions that need to be implemented per-platform */
 #include "wireguard-platform.h"
 
+
+/* Debug of the wireguard enable */
+#define WG_DEBUG
+
 /* tai64n contains 64-bit seconds and 32-bit nano offset (12 bytes)*/
 #define WIREGUARD_TAI64N_LEN (12)
 /* Auth algorithm is chacha20pol1305 which is 128bit (16 byte) authenticator */
