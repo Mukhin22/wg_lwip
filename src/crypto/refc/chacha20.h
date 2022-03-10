@@ -42,7 +42,7 @@
 #define CHACHA20_BLOCK_SIZE		(64)
 #define CHACHA20_KEY_SIZE		(32)
 
-#define DEBUG
+// #define DEBUG
 #ifdef DEBUG 
 #include <stdio.h>
 #endif

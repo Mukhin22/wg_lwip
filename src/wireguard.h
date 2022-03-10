@@ -50,7 +50,7 @@
 
 
 /* Debug of the wireguard enable */
-#define WG_DEBUG
+// #define WG_DEBUG
 
 /* tai64n contains 64-bit seconds and 32-bit nano offset (12 bytes)*/
 #define WIREGUARD_TAI64N_LEN (12)
