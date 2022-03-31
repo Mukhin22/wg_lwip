@@ -1085,6 +1085,11 @@ err_t wireguardif_init(struct netif *netif) {
   }
   if (result == ERR_OK) {
       fprintf(stdout, "wireguardif_init success\n");
+      fprintf(stdout, "Device public key is: ");
+      for(uint8_t i = 0; i < WIREGUARD_PUBLIC_KEY_LEN; i++) {
+        fprintf(stdout, "%c", device->public_key[i]);
+      }
+      fprintf(stdout, "\n");
   }
   return result;
 }

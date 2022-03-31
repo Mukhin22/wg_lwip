@@ -2,24 +2,24 @@
 
 err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_netif) {
   err_t err = ERR_OK;
-  struct netif wg_netif_struct = {0};
+  // struct netif wg_netif_struct = {0};
   // static struct netif *wg_netif = NULL;
   uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
-  ip_addr_t ipaddr;
-  ip_addr_t netmask;
-  ip_addr_t gateway;
-  // ip_addr_t ipaddr = init_data.ip;
-  IP4_ADDR(&ipaddr, 192, 168, 40, 10);
-  // ip_addr_t netmask = init_data.netmask;
-  IP4_ADDR(&netmask, 255, 255, 255, 0);
-  // ip_addr_t gateway = init_data.gateway;
-  IP4_ADDR(&gateway, 192, 168, 40, 1);
+  // ip_addr_t ipaddr;
+  // ip_addr_t netmask;
+  // ip_addr_t gateway;
+  ip_addr_t ipaddr = init_data.ip;
+  // IP4_ADDR(&ipaddr, 10, 217, 59, 2);
+  ip_addr_t netmask = init_data.netmask;
+  // IP4_ADDR(&netmask, 255, 255, 255, 255);
+  ip_addr_t gateway = init_data.gateway;
+  // IP4_ADDR(&gateway, 0, 0, 0, 0);
 
   // Setup the WireGuard device structure
-  wg.private_key = "8BU1giso23adjCk93dnpLJnK788bRAtpZxs8d+Jo+Vg=";
-  wg.listen_port = 51820;
+  wg.private_key = "gH2YqDa+St6x5eFhomVQDwtV1F0YMQd3HtOElPkZgVY=";
+  wg.listen_port = 5555;//51820;
   wg.bind_netif = NULL;
 
   // Register the new WireGuard network interface with lwIP
@@ -35,15 +35,15 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
 
   // Initialise the first WireGuard peer structure
   wireguardif_peer_init(&peer);
-  peer.public_key = "cDfetaDFWnbxts2Pbz4vFYreikPEEVhTlV/sniIEBjo=";
+  peer.public_key = "X6NJW+IznvItD3B5TseUasRPjPzF0PkM5+GaLIjdBG4=";
   peer.preshared_key = NULL;
   // Allow all IPs through tunnel
   IP4_ADDR(&peer.allowed_ip, 0, 0, 0, 0);
   IP4_ADDR(&peer.allowed_mask, 0, 0, 0, 0);
 
   // If we know the endpoint's address can add here
-  IP4_ADDR(&peer.endpoint_ip, 10, 0, 0, 12);
-  peer.endport_port = 12345;
+  IP4_ADDR(&peer.endpoint_ip, 0, 0, 0, 0);
+  peer.endport_port = 5555;
 
   // Register the new WireGuard peer with the netwok interface
   err = wireguardif_add_peer(wg_netif, &peer, &wg_peer_index);

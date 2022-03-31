@@ -168,7 +168,6 @@ main(int argc, char **argv)
   netif_add(&netif, &ipaddr, &netmask, &gw, NULL, tapif_init, ethernet_input);
 
   netif_set_up(&netif);
-  // sys_timeouts_init();
 #if LWIP_IPV6
   netif_create_ip6_linklocal_address(&netif, 1);
 #endif
@@ -182,7 +181,7 @@ main(int argc, char **argv)
   printf("Applications started.\n");
   while (1) {
     /* poll netif, pass packet to lwIP */
-    tapif_select(&netif);
+    tapif_select(&wg_netif);
 
     sys_check_timeouts();
   }
