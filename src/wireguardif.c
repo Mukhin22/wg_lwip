@@ -466,7 +466,10 @@ static void wireguardif_send_handshake_response(struct wireguard_device *device,
       err = pbuf_take(pbuf, &packet, sizeof(struct message_handshake_response));
       if (err == ERR_OK) {
         // OK!
-        wireguardif_peer_output(device->netif, pbuf, peer);
+        err = wireguardif_peer_output(device->netif, pbuf, peer);
+        if (err != ERR_OK) {
+          fprintf(stderr, "Wireguard peer output failed\n");
+        }
       }
       pbuf_free(pbuf);
     }
@@ -882,6 +885,7 @@ err_t wireguardif_add_peer(struct netif *netif, struct wireguardif_peer *p,
     if (peer) {
       *peer_index = wireguard_peer_index(device, peer);
     } else {
+      fprintf(stderr, "WIREGUARDIF: Error peer not allocated\n");
       *peer_index = WIREGUARDIF_INVALID_INDEX;
     }
   }
@@ -1085,11 +1089,6 @@ err_t wireguardif_init(struct netif *netif) {
   }
   if (result == ERR_OK) {
       fprintf(stdout, "wireguardif_init success\n");
-      fprintf(stdout, "Device public key is: ");
-      for(uint8_t i = 0; i < WIREGUARD_PUBLIC_KEY_LEN; i++) {
-        fprintf(stdout, "%c", device->public_key[i]);
-      }
-      fprintf(stdout, "\n");
   }
   return result;
 }

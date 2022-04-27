@@ -1,24 +1,23 @@
 #include "wg.h"
 
-err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_netif) {
+
+
+err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_netif)
+{
   err_t err = ERR_OK;
-  // struct netif wg_netif_struct = {0};
-  // static struct netif *wg_netif = NULL;
   uint8_t wg_peer_index = WIREGUARDIF_INVALID_INDEX;
   struct wireguardif_init_data wg;
   struct wireguardif_peer peer;
-  // ip_addr_t ipaddr;
-  // ip_addr_t netmask;
-  // ip_addr_t gateway;
   ip_addr_t ipaddr = init_data.ip;
-  // IP4_ADDR(&ipaddr, 10, 217, 59, 2);
   ip_addr_t netmask = init_data.netmask;
-  // IP4_ADDR(&netmask, 255, 255, 255, 255);
   ip_addr_t gateway = init_data.gateway;
-  // IP4_ADDR(&gateway, 0, 0, 0, 0);
 
   // Setup the WireGuard device structure
-  wg.private_key = "gH2YqDa+St6x5eFhomVQDwtV1F0YMQd3HtOElPkZgVY=";
+  if (!init_data.private_key) {  
+    wg.private_key = "ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=";
+  } else {
+    wg.private_key = init_data.private_key;
+  }
   wg.listen_port = 5555;//51820;
   wg.bind_netif = NULL;
 
@@ -35,14 +34,25 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
 
   // Initialise the first WireGuard peer structure
   wireguardif_peer_init(&peer);
-  peer.public_key = "X6NJW+IznvItD3B5TseUasRPjPzF0PkM5+GaLIjdBG4=";
+  if (!init_data.peer_public_key) {
+    peer.public_key = "B3AiK5DLMgprKx2SH/DbCmxyBzKTMKhv1mkpH+5STXI="; // public key of 2nd aws server
+  } else {
+    peer.public_key = init_data.peer_public_key;
+  }
   peer.preshared_key = NULL;
+
   // Allow all IPs through tunnel
   IP4_ADDR(&peer.allowed_ip, 0, 0, 0, 0);
   IP4_ADDR(&peer.allowed_mask, 0, 0, 0, 0);
 
   // If we know the endpoint's address can add here
-  IP4_ADDR(&peer.endpoint_ip, 0, 0, 0, 0);
+  if (!init_data.peer_ip.addr) {
+  // IP4_ADDR(&peer.endpoint_ip, 16, 171, 45, 144);
+    IP4_ADDR(&peer.endpoint_ip, 10, 0, 0, 2);
+  } else {
+    peer.endpoint_ip.addr = init_data.peer_ip.addr;
+  }
+
   peer.endport_port = 5555;
 
   // Register the new WireGuard peer with the netwok interface
@@ -55,5 +65,6 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
     err = wireguardif_connect(wg_netif, wg_peer_index);
     LWIP_ERROR("wireguardif_connect failed\n", err == ERR_OK, return ERR_ABRT);
   }
+
   return err;
 }

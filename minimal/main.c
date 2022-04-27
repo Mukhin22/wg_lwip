@@ -84,6 +84,12 @@ static struct option longopts[] = {
   {"netmask", required_argument, NULL, 'm'},
   /* ping destination */
   {"trap_destination", required_argument, NULL, 't'},
+  /* wireguard peer ip address */
+  {"wg_peer_ipaddr", required_argument, NULL, 'a'},
+  /* wireguard peer public key */
+  {"wg_peer_pub_key", required_argument, NULL, 'p'},
+  /* wireguard private key */
+  {"wg_private_key", required_argument, NULL, 's'},
   /* new command line options go here! */
   {NULL,   0,                 NULL,  0}
 };
@@ -121,7 +127,7 @@ main(int argc, char **argv)
   /* use debug flags defined by debug.h */
   debug_flags = LWIP_DBG_ON;
 
-  while ((ch = getopt_long(argc, argv, "dhg:i:m:", longopts, NULL)) != -1) {
+  while ((ch = getopt_long(argc, argv, "dhg:i:m:a:p:s:", longopts, NULL)) != -1) {
     switch (ch) {
       case 'd':
         debug_flags |= (LWIP_DBG_ON|LWIP_DBG_TRACE|LWIP_DBG_STATE|LWIP_DBG_FRESH|LWIP_DBG_HALT);
@@ -138,6 +144,16 @@ main(int argc, char **argv)
         break;
       case 'm':
         ip4addr_aton(optarg, &netmask);
+        break;
+      case 'a':
+        ip4addr_aton(optarg, &wg_init_params.peer_ip);
+        break;
+      case 'p':
+        /* TODO: add checking for char string param */
+        wg_init_params.peer_public_key = optarg;
+      case 's':
+        /* TODO: add checking for char string param */
+        wg_init_params.private_key = optarg;
         break;
       default:
         usage();
@@ -177,11 +193,11 @@ main(int argc, char **argv)
 
   err = wireguard_setup(wg_init_params, &wg_netif);
   LWIP_ERROR("wireguard_setup failed\n", err == ERR_OK, return ERR_ABRT);
-  netif_set_default(&wg_netif);
+  netif_set_default(&netif);
   printf("Applications started.\n");
   while (1) {
     /* poll netif, pass packet to lwIP */
-    tapif_select(&wg_netif);
+    tapif_select(&netif);
 
     sys_check_timeouts();
   }

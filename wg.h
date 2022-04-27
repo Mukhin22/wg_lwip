@@ -20,9 +20,13 @@ struct wg_init_data {
   ip_addr_t ip;
   ip_addr_t netmask;
   ip_addr_t gateway;
+  const char *private_key;
+  /* Peer connection data*/
+  ip_addr_t peer_ip;
+  const char *peer_public_key;
 };
 
-/* Wireguard setup function called with parameters struct */
+/* Wireguard setup function called with parameters struct*/
 err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_netif);
 
 #endif /* _WG_H_ */
