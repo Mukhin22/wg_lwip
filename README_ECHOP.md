@@ -5,15 +5,7 @@
  cmake --build .
 ```
 
-# Run 
-
-```
-sudo ./echop -g 10.0.0.0 -i 10.0.0.10 -m 255.255.255.0
-            -a 10.0.0.11 -s ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=
-            -p Cme9E2nbgTgkDUa+oS5fbqF9HC7KTRgnw8zLvwRp9z4=
-```
-
-# Connecting linux wireguard(wg0) and echop application
+# Connecting linux wireguard(wg0) and echop application within the same linux machine
 
 ## Launch parameters for echop
  - NOTE: -p parameter - public key of the wg0 interface
