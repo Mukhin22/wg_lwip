@@ -42,7 +42,6 @@
 #include "lwip/mem.h"
 #include "lwip/memp.h"
 #include "lwip/sys.h"
-// #include "custom_timers.h"
 #include "lwip/timeouts.h"
 #include "lwip/stats.h"
 
@@ -137,13 +136,13 @@ main(int argc, char **argv)
         exit(0);
         break;
       case 'g':
-        ip4addr_aton(optarg, &gw);
+        ip4addr_aton(optarg, &wg_init_params.gateway);
         break;
       case 'i':
-        ip4addr_aton(optarg, &ipaddr);
+        ip4addr_aton(optarg, &wg_init_params.ip);
         break;
       case 'm':
-        ip4addr_aton(optarg, &netmask);
+        ip4addr_aton(optarg, &wg_init_params.netmask);
         break;
       case 'a':
         ip4addr_aton(optarg, &wg_init_params.peer_ip);
@@ -161,9 +160,9 @@ main(int argc, char **argv)
     }
   }
   /* add the initialization params for the wireguard interface */
-  wg_init_params.ip = ipaddr;
-  wg_init_params.gateway = gw;
-  wg_init_params.netmask = netmask;
+  // wg_init_params.ip = ipaddr;
+  // wg_init_params.gateway = gw;
+  // wg_init_params.netmask = netmask;
 
   argc -= optind;
   argv += optind;

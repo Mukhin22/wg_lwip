@@ -48,7 +48,7 @@ err_t wireguard_setup(const struct wg_init_data init_data, struct netif *wg_neti
   // If we know the endpoint's address can add here
   if (!init_data.peer_ip.addr) {
   // IP4_ADDR(&peer.endpoint_ip, 16, 171, 45, 144);
-    IP4_ADDR(&peer.endpoint_ip, 10, 0, 0, 2);
+    IP4_ADDR(&peer.endpoint_ip, 10, 0, 0, 11);
   } else {
     peer.endpoint_ip.addr = init_data.peer_ip.addr;
   }
