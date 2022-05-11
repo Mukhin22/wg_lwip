@@ -38,6 +38,10 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+// #define DEBUG
+#ifdef DEBUG
+#include <stdio.h>
+#endif
 #include "../../crypto.h"
 
 #define POLY1305_KEY_SIZE		32
@@ -56,7 +60,11 @@ static void generate_poly1305_key(struct poly1305_context *poly1305_state, struc
 	chacha20_init(chacha20_state, key, nonce);
 
 	// We take the first 256 bits or the serialized state, and use those as the one-time Poly1305 key
+	#ifdef DEBUG
+	printf("First chacha20 use on generate poly1305_key\n");
+	#endif
 	chacha20(chacha20_state, block, block, sizeof(block));
+	
 
 	poly1305_init(poly1305_state, block);
 
@@ -72,10 +80,14 @@ void chacha20poly1305_encrypt(uint8_t *dst, const uint8_t *src, size_t src_len, 
 
 	// First, a Poly1305 one-time key is generated from the 256-bit key and nonce using the procedure described in Section 2.6.
 	generate_poly1305_key(&poly1305_state, &chacha20_state, key, nonce);
-
+#ifdef DEBUG
+	printf("Before the chacha20 function\n");
+#endif
 	// Next, the ChaCha20 encryption function is called to encrypt the plaintext, using the same key and nonce, and with the initial counter set to 1.
 	chacha20(&chacha20_state, dst, src, src_len);
-
+#ifdef DEBUG
+	printf("After the chacha20 function\n");
+#endif
 	// Finally, the Poly1305 function is called with the Poly1305 key calculated above, and a message constructed as a concatenation of the following:
 	// - The AAD
 	poly1305_update(&poly1305_state, ad, ad_len);

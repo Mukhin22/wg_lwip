@@ -136,4 +136,6 @@ err_t wireguardif_disconnect(struct netif *netif, u8_t peer_index);
 err_t wireguardif_peer_is_up(struct netif *netif, u8_t peer_index,
                              ip_addr_t *current_ip, u16_t *current_port);
 
+void wireguardif_tmr(void *arg);
+
 #endif /* _WIREGUARDIF_H_ */

@@ -40,7 +40,6 @@
 
 // For HMAC calculation
 #define WIREGUARD_BLAKE2S_BLOCK_SIZE (64)
-
 // 5.4 Messages
 // Constants
 static const uint8_t CONSTRUCTION[37] = "Noise_IKpsk2_25519_ChaChaPoly_BLAKE2s"; // The UTF-8 string literal "Noise_IKpsk2_25519_ChaChaPoly_BLAKE2s", 37 bytes of output
@@ -56,7 +55,7 @@ static const uint8_t zero_key[WIREGUARD_PUBLIC_KEY_LEN] = { 0 };
 static uint8_t construction_hash[WIREGUARD_HASH_LEN];
 static uint8_t identifier_hash[WIREGUARD_HASH_LEN];
 
-
+static const char *STANDARD_PUB_KEY = "nJYU8rHL4E8RlJjZIILN8OVit41l8qDsN9vEYL5OtgA=";
 void wireguard_init() {
 	wireguard_blake2s_ctx ctx;
 	// Pre-calculate chaining key hash
@@ -413,6 +412,7 @@ static bool wireguard_generate_public_key(uint8_t *public_key, const uint8_t *pr
 	bool result = false;
 	if (memcmp(private_key, zero_key, WIREGUARD_PUBLIC_KEY_LEN) != 0) {
 		result = (wireguard_x25519(public_key, private_key, basepoint) == 0);
+		// public_key = STANDARD_PUB_KEY;
 	}
 	return result;
 }
@@ -984,7 +984,18 @@ bool wireguard_device_init(struct wireguard_device *device, const uint8_t *priva
 	// Ensure private key is correctly "clamped"
 	wireguard_clamp_private_key(device->private_key);
 	device->valid = wireguard_generate_public_key(device->public_key, private_key);
+	// memcpy(device->public_key, STANDARD_PUB_KEY, WIREGUARD_PUBLIC_KEY_LEN);
+	// device->valid = true;
+	char public_out[64] = {0};
+	size_t out_len = sizeof(public_out);
+	wireguard_base64_encode(device->public_key, WIREGUARD_PUBLIC_KEY_LEN, public_out, &out_len);
 	if (device->valid) {
+		printf("Public key base 64:\n");
+		for (size_t i = 0; i < out_len; i++) {
+			printf("%c", public_out[i]);
+		}
+		printf("\n");
+		
 		generate_cookie_secret(device);
 		// 5.4.4 Cookie MACs - The value Hash(Label-Mac1 || Spubm' ) above can be pre-computed.
 		wireguard_mac_key(device->label_mac1_key, device->public_key, LABEL_MAC1, sizeof(LABEL_MAC1));

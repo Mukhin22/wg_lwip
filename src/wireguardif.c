@@ -217,6 +217,9 @@ static err_t wireguardif_output_to_peer(struct netif *netif, struct pbuf *q,
 // peer/endpoint
 static err_t wireguardif_output(struct netif *netif, struct pbuf *q,
                                 const ip4_addr_t *ipaddr) {
+#ifdef WG_DEBUG
+  printf("Wireguard output started\n");
+#endif
   struct wireguard_device *device = (struct wireguard_device *)netif->state;
   // Send to peer that matches dest IP
   struct wireguard_peer *peer = peer_lookup_by_allowed_ip(device, ipaddr);
@@ -463,7 +466,10 @@ static void wireguardif_send_handshake_response(struct wireguard_device *device,
       err = pbuf_take(pbuf, &packet, sizeof(struct message_handshake_response));
       if (err == ERR_OK) {
         // OK!
-        wireguardif_peer_output(device->netif, pbuf, peer);
+        err = wireguardif_peer_output(device->netif, pbuf, peer);
+        if (err != ERR_OK) {
+          fprintf(stderr, "Wireguard peer output failed\n");
+        }
       }
       pbuf_free(pbuf);
     }
@@ -879,6 +885,7 @@ err_t wireguardif_add_peer(struct netif *netif, struct wireguardif_peer *p,
     if (peer) {
       *peer_index = wireguard_peer_index(device, peer);
     } else {
+      fprintf(stderr, "WIREGUARDIF: Error peer not allocated\n");
       *peer_index = WIREGUARDIF_INVALID_INDEX;
     }
   }
@@ -935,8 +942,10 @@ static bool should_reset_peer(struct wireguard_peer *peer) {
   return result;
 }
 
-static void wireguardif_tmr(void *arg) {
+void wireguardif_tmr(void *arg) {
   struct wireguard_device *device = (struct wireguard_device *)arg;
+  device->netif->state = device;
+  // device->netif->output = wireguardif_output;
   struct wireguard_peer *peer;
   int x;
   // Reschedule this timer
@@ -1077,6 +1086,9 @@ err_t wireguardif_init(struct netif *netif) {
     }
   } else {
     result = ERR_ARG;
+  }
+  if (result == ERR_OK) {
+      fprintf(stdout, "wireguardif_init success\n");
   }
   return result;
 }

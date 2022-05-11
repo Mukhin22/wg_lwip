@@ -120,16 +120,33 @@ void chacha20(struct chacha20_ctx *ctx, uint8_t *out, const uint8_t *in, uint32_
 
 	if (len) {
 		for (;;) {
+			#ifdef DEBUG
+			printf("Before block\n");
+			#endif
 			chacha20_block(ctx, output);
+			#ifdef DEBUG
+			printf("After block\n");
+			printf("Address of out: %p, in: %p, output: %p,  len is %d\n", out, in, output, len);
+			printf("Out[0] = %d\n", out[0]);
+			printf("output[0] = %d \n", output[0]);
+			printf("in[0] = %d\n",  in[0]);
+
+			#endif
 			// Word 12 is a block counter
 			ctx->state[12] = PLUSONE(ctx->state[12]);
 			if (len <= 64) {
 				for (i = 0;i < len;++i) {
+					#ifdef DEBUG
+					printf("Out[%d]\n", i);
+					#endif
 					out[i] = in[i] ^ output[i];
 			    }
 			    return;
 			}
 			for (i = 0;i < 64;++i) {
+				#ifdef DEBUG
+				printf("Out[%d]\n", i);
+				#endif
 				out[i] = in[i] ^ output[i];
 			}
 			len -= 64;
