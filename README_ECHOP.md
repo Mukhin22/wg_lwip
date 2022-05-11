@@ -1,11 +1,17 @@
 # Build with cmake 
- - cmake .
- - cmake --build .
+
+```
+ cmake .
+ cmake --build .
+```
 
 # Run 
- sudo ./echop -g 10.0.0.0 -i 10.0.0.10 -m 255.255.255.0
+
+```
+sudo ./echop -g 10.0.0.0 -i 10.0.0.10 -m 255.255.255.0
             -a 10.0.0.11 -s ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=
             -p Cme9E2nbgTgkDUa+oS5fbqF9HC7KTRgnw8zLvwRp9z4=
+```
 
 # Connecting linux wireguard(wg0) and echop application
 
@@ -23,14 +29,20 @@
   3. netmask - 255.255.255.0
 
 ### command to start from console
+
+```
   sudo ./echop -g 10.0.0.0 -i 10.0.0.10 -m 255.255.255.0
             -a 10.0.0.11 -s ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=
             -p Cme9E2nbgTgkDUa+oS5fbqF9HC7KTRgnw8zLvwRp9z4=
+```
 
 ### launch.json "args" field for running in VSCode
+
+```
             "args": ["-g", "10.0.0.0", "-i", "10.0.0.10", "-m", "255.255.255.0",
             "-a", "10.0.0.11", "-s", "ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=",
             "-p", "Cme9E2nbgTgkDUa+oS5fbqF9HC7KTRgnw8zLvwRp9z4="],
+```
 ## Linux wireguard wg0.conf file content example
 
 ```
@@ -55,24 +67,37 @@ This parameters could be set with command line arguments of application
  - first peer public key:  "+t97oimvjgG7Qahd9wNv5j1yH9Bve2/FxAEECEzLt1g="
  - ip_addr(tun/tap): 10.0.0.10
  - launch.json file argument for vscode are:
+
+```
              "args": ["-g", "10.0.0.0", "-i", "10.0.0.10", "-m", "255.255.255.0",
             "-a", "10.0.0.11", "-s", "ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc=",
             "-p", "wCRAsj6Yn0gXvEJW7rNsatSTzyC5CP6nbrNsMxDuVwU="],
+```
+
  ## seconds peer
 
  - second peer private key: "SFMJ5Qo0pzZOMfogNGqqq2bUkYlAVZ+es9TV8WDhiWc="
  - second peer public key: "wCRAsj6Yn0gXvEJW7rNsatSTzyC5CP6nbrNsMxDuVwU="
  - ip_addr(tun/tap): 10.0.0.11
  - launch.json file argument for vscode are:
+ 
+```
              "args": ["-g", "10.0.0.0", "-i", "10.0.0.11", "-m", "255.255.255.0",
             "-a", "10.0.0.10", "-s", "SFMJ5Qo0pzZOMfogNGqqq2bUkYlAVZ+es9TV8WDhiWc=",
             "-p", "+t97oimvjgG7Qahd9wNv5j1yH9Bve2/FxAEECEzLt1g="],
+```
 
 ## Command to start in console
 
 ### first peer
 
+```
  sudo ./echop -g 10.0.0.0 -i 10.0.0.10 -m 255.255.255.0 -a 10.0.0.11 -s ONj6Iefel47uMKtWRCSMLan2UC5eW3Fj9Gsy9bqcyEc= -p wCRAsj6Yn0gXvEJW7rNsatSTzyC5CP6nbrNsMxDuVwU=
+```
 
 ### second peer
+
+```
  sudo ./echop -g 10.0.0.0 -i 10.0.0.11 -m 255.255.255.0 -a 10.0.0.10 -s SFMJ5Qo0pzZOMfogNGqqq2bUkYlAVZ+es9TV8WDhiWc= -p +t97oimvjgG7Qahd9wNv5j1yH9Bve2/FxAEECEzLt1g=
+ ```
+ 
