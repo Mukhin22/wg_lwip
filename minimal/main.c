@@ -111,7 +111,7 @@ main(int argc, char **argv)
   err_t err;
   struct netif netif;
   struct netif wg_netif;
-  struct wg_init_data wg_init_params;
+  struct wg_init_data wg_init_params = { 0 };
   int ch;
   char ip_str[16] = {0}, nm_str[16] = {0}, gw_str[16] = {0};
 
