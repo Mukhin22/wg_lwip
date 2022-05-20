@@ -150,6 +150,7 @@ main(int argc, char **argv)
       case 'p':
         /* TODO: add checking for char string param */
         wg_init_params.peer_public_key = optarg;
+        break;
       case 's':
         /* TODO: add checking for char string param */
         wg_init_params.private_key = optarg;
